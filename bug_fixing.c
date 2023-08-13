@@ -1,8 +1,10 @@
 //  Bug - 
 
+
+ 
 //there was error in remove_data function as first we have
 //to make sure the buffer is not empty before removing the data
-// 
+//We need to check in remove_data() -- deadlock situation
 
 
 
@@ -39,6 +41,10 @@ void add_data(int data) {
 }
 
 int remove_data() {
+     if (count == 0) {
+        // The buffer is empty, so we cannot remove any data.
+        return -1;
+    }
     Node *temp = head;
     int data = temp->data;
     head = head->next;
